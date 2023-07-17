@@ -1,14 +1,21 @@
 import React, { useState } from "react";
-import Message from "./Message";
-import Counter from "./Counter";
-import Toggle from "./Toggle";
-import Input from "./Input";
-import ColorPicker from "./ColorPicker";
-import ToDoList from "./ToDoList";
-import Tabs from "./Tabs";
-import Form from "./Form";
+import Message from "./useStateHook/Message";
+import Counter from "./useStateHook/Counter";
+import Toggle from "./useStateHook/Toggle";
+import Input from "./useStateHook/Input";
+import ColorPicker from "./useStateHook/ColorPicker";
+import ToDoList from "./useStateHook/ToDoList";
+import Tabs from "./useStateHook/Tabs";
+import Form from "./useStateHook/Form";
 import "./App.css";
-import CheckBoxGroup from "./CheckBoxGroup";
+import CheckBoxGroup from "./useStateHook/CheckBoxGroup";
+import app from "../src/images/app.jpg";
+import Dropdown from "./useStateHook/Dropdown";
+import DocumentTitle from "./useEffectHook/DocumentTitle";
+import FetchData from "./useEffectHook/FetchData ";
+import ResizeListener from "./useEffectHook/ResizeListener";
+import Timer from "./useEffectHook/Timer";
+import FetchOnButtonClick from "./useEffectHook/FetchOnButtonClick";
 
 const App = () => {
   const [names, setNames] = useState([]);
@@ -27,6 +34,7 @@ const App = () => {
   const handleClear = () => {
     setNames([]);
     setCurrInd(0);
+    setCode(null);
   };
 
   const handleCode = () => {
@@ -44,8 +52,15 @@ const App = () => {
         {names.map((name, index) => (
           <p key={index}>{name}</p>
         ))}
-        {code && <p></p>}
+        {code && <img src={app} style={{ height: "30rem" }} />}
       </div>
+
+      <h1
+        style={{ textAlign: "center", fontWeight: "bolder", fontSize: "4rem" }}
+      >
+        USE STATE HOOKS
+      </h1>
+
       <ul>
         <li>
           <Message />
@@ -73,6 +88,32 @@ const App = () => {
         </li>
         <li>
           <CheckBoxGroup />
+        </li>
+        <li>
+          <Dropdown />
+        </li>
+      </ul>
+
+      <h1
+        style={{ textAlign: "center", fontWeight: "bolder", fontSize: "4rem" }}
+      >
+        USE EFFECT HOOKS
+      </h1>
+      <ul>
+        <li>
+          <DocumentTitle />
+        </li>
+        <li>
+          <FetchData />
+        </li>
+        <li>
+          <ResizeListener />
+        </li>
+        <li>
+          <Timer />
+        </li>
+        <li>
+          <FetchOnButtonClick />
         </li>
       </ul>
     </>
